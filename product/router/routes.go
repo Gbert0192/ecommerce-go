@@ -1,0 +1,17 @@
+package routes
+
+import (
+	"product/cmd/product/handler"
+	"product/middleware"
+
+	"github.com/gin-gonic/gin"
+)
+
+func SetupRouter(router *gin.Engine, productHandler handler.ProductHandler) {
+	router.Use(middleware.RequestLogger())
+	router.POST("/v1/product_category", productHandler.ProductCategoryManagement)
+	router.POST("/v1/product", productHandler.ProductManagement)
+	router.GET("/v1/product/:id", productHandler.GetProduct)
+	router.GET("/v1/product_category/:id", productHandler.GetProductCategory)
+	router.GET("/v1/product/search", productHandler.SearchProduct)
+}

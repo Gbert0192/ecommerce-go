@@ -1,0 +1,15 @@
+app:
+  port: 8081
+
+
+database:
+  host: localhost
+  port: 5434
+  user: postgres
+  password: 1234
+  name: product
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
