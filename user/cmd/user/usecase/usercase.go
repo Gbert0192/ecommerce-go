@@ -86,7 +86,7 @@ func (uc *UserUseCase) Login(ctx context.Context, param *models.LoginParameter) 
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user_id": user.ID,
-		"exp":     time.Now().Add(time.Hour * 1).Unix(),
+		"exp":     time.Now().Add(time.Hour * 6).Unix(),
 	})
 	tokenString, err := token.SignedString([]byte(uc.JWTSecret))
 	if err != nil {

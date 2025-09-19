@@ -1,4 +1,4 @@
-package constans
+package constant
 
 const (
 	OrderStatusCreated    = 0

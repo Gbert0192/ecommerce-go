@@ -18,3 +18,7 @@ redis:
 
 secret:
   jwt_secret: "5ecre7"
+
+product:
+  host: http://localhost:8081
+

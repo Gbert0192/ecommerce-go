@@ -27,7 +27,7 @@ func (s *ProductService) GetProductById(ctx context.Context, productId int64) (*
 			"productId": productId,
 		}).Errorf("s.ProductRepository.GetProductByIDFromRedis got error : %v", err)
 	}
-	if product.ID != 0 {
+	if product != nil && product.ID != 0 {
 		return product, nil
 	}
 

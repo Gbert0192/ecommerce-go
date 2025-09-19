@@ -2,8 +2,11 @@ package repository
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"product/models"
+
+	"gorm.io/gorm"
 )
 
 func (r *ProductRepository) GetProductByID(ctx context.Context, id int64) (*models.Product, error) {
@@ -19,6 +22,9 @@ func (r *ProductRepository) FindProductId(ctx context.Context, productId int64) 
 	var product models.Product
 	err := r.Database.WithContext(ctx).Table("product").Where("id = ?", productId).Last(&product).Error
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return &models.Product{}, nil
+		}
 		return nil, err
 	}
 	return &product, nil
